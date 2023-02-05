@@ -1,0 +1,185 @@
+/*
+* Author: Fazle Rabbi
+* Date: 4 Feb, 2023
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Open+Sans&family=Sofia+Sans:wght@300;500&family=Unbounded&display=swap');
+
+/*
+font-family: 'Montserrat', sans-serif;
+font-family: 'Open Sans', sans-serif;
+font-family: 'Sofia Sans', sans-serif;
+font-family: 'Unbounded', cursive;
+*/
+
+:root {
+  --header-color: #1e90ff;
+  --footer-color: #ffffff;
+  --black: #000000;
+  --green: #07ba85;
+}
+
+*{
+	margin: 0;
+	padding: 0;
+}
+
+html{
+	scroll-behavior: smooth;
+}
+
+body{
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+	min-height: 100vh;
+	/* background: linear-gradient(to right, #000,#1f1e89); */
+	background: linear-gradient(to right, #000046,#1CB5E0);
+}
+
+header{
+	background: linear-gradient(to right,var(--green),var(--black));
+	color: white;
+	padding: 5px 10px;
+	/* height: 60px; */
+	/* display: flex; */
+	/* justify-content: space-between; */
+	/* align-items: center; */
+	font-family: 'Unbounded', cursive;
+}
+
+.wrapper-inside-header{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.tutorial-btn{
+	/* background: linear-gradient(to right, #000046,#1CB5E0); */
+	/* background: linear-gradient(to right, #ee42f5,#1a5f70); */
+	background: none;
+	border: 1.5px solid white;
+	color: white;
+	/* width: 100%; */
+	height: 40px;
+	padding: 0 10px;
+	font-size: 15px;
+	font-family: 'Montserrat', sans-serif;
+	/* border: 2px solid white; */
+	font-weight: bold;
+	/* margin: 10px 20px; */
+	margin: 10px 0;
+	border-radius: 5px;
+}
+
+.tutorial-btn:hover{
+	background: whitesmoke;
+	color: var(--green);
+	/* border: 2px solid white; */
+}
+
+.form{
+	background: #ededed;
+	padding: 15px;
+	border-radius: 8px;
+	margin: 20px 20px;
+	border: 2px solid white;
+	/* opacity: 0; */
+}
+
+.input-group{
+	margin-bottom: 17px;
+}
+
+.label{
+	/* color: white; */
+	color: teal;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.input{
+	border-radius: 8px;
+	width: 100%;
+	border: 1px solid lightgray;
+	box-shadow: 1px 5px 15px rgba(0,0,0,0.15);
+	/* color: white; */
+	color: #222;
+	background: white;
+	outline: 0;
+	height: 40px;
+	padding-left: 5px;
+	margin-top: 6px;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 15px;
+}
+
+.input-message{
+	height: 70px;
+}
+
+.input:hover{
+	border: 1px solid var(--green);
+}
+
+.start-btn{
+	/* margin-top: 15px; */
+	border: none;
+	background: #0aa778;
+	/* border-radius: 20px; */
+	border-radius: 8px;
+	height: 40px;
+	width: 150px;
+	color: white;
+	/* font-weight: bold; */
+	font-size: 15px;
+	font-family: 'Sofia Sans', sans-serif;
+
+}
+
+.start-btn:active{
+	background: teal;
+}
+
+footer{
+	background: linear-gradient(to right,var(--green),var(--black));
+	color: white;
+	padding: 10px;
+	height: 60px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Sofia Sans', sans-serif;
+}
+
+footer a{
+	color: white;
+	margin-top: auto;
+}
+
+/* Responsive Design */
+
+@media only screen and (min-width: 600px) {
+  .form{
+		margin: 60px;
+  }
+}
+
+
+/* Utility Class */
+
+.p-2{
+	padding: 10px;
+}
+
+.text-center{
+	text-align: center;
+}
+
+.github-logo{
+	color: white;
+}
+
+.github-logo:hover{
+	color: #04af7d;
+}
+

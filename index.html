@@ -14,6 +14,7 @@
    <!--Custom CSS-->
    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
    <link rel="stylesheet" href="css/modal.css" type="text/css" media="all" />
+   <link rel="stylesheet" href="css/terms_modal.css" type="text/css" media="all" />
 </head>
 <body>
    
@@ -66,12 +67,26 @@
       </form>
       <div class="modal-container">
 	      <div class="modal-box">
-				<h2>Bombing <span class="bombing-status">Started</span></h2>
+				<h2 class="modal-box-title">Bombing <span class="bombing-status">Started</span></h2>
 				<img class="loading" width="100px" src="https://i.pinimg.com/originals/1f/2d/f8/1f2df8fad7e9bfcb18d9d553f8fc259b.gif" alt="Loading..." />
 				<p class="total-email">Total Email <span class="total-email-number">100</span></p>
 				<span class="warning">Don't use for illegal purpose.Use only for fun.</span>
 				<p class="email-status"><span class="email-count">00</span> Email sent successful ✅</p>
 				<button class="stop-btn">Stop Bombing</button>
+	      </div>
+      </div>
+      <div class="toast">
+			<span>Bombing stopped</span>
+      </div>
+      <div class="terms-modal-container">
+	      <div class="terms-modal">
+				<h2>Terms & Conditions</h2>
+				<p>Hi there 🖐️, this app is made only for educational purpose.So don't use this app for any bad work, if you use it for bad work or do any kind of crime by using this app, then the developer of this app will not be responsible.</p>
+				<h5>Are you agree?</h5>
+				<div class="wrapper">
+					<button class="nah">Nah</button>
+					<button class="yes">Yes</button>
+				</div>
 	      </div>
       </div>
    </main>
@@ -85,5 +100,6 @@
    <script src="https://kit.fontawesome.com/2982aea746.js" crossorigin="anonymous"></script>
    <script src="js/app.js" type="text/javascript" charset="utf-8"></script>
    <script src="js/bombing.js" type="text/javascript" charset="utf-8"></script>
+   <script src="js/agree.js" type="text/javascript" charset="utf-8"></script>
 </body>
 </html>

@@ -1,0 +1,81 @@
+.terms-modal-container{
+	position: absolute;
+	height: 100%;
+	background: rgba(0,0,0,0.76);
+	/* display: flex; */
+	/* justify-content: center; */
+	/* align-items: center; */
+	/* flex-direction: column; */
+	/* top: 20px; */
+	opacity: 0;
+	pointer-events: none;
+	transition: .5s;
+}
+
+.terms-modal{
+	background: white;
+	border-radius: 10px;
+	padding: 6px 10px;
+	margin: 0 20px;
+	margin-top: 30px;
+	padding: 15px;
+}
+
+.terms-modal h2{
+	color: #ff0ca7;
+	font-family: 'Unbounded', cursive;
+	font-size: 1.2rem;
+	margin-bottom: 20px;
+}
+
+.terms-modal p{
+	font-family: 'Montserrat', sans-serif;
+	color: #222;
+	line-height: 23px;
+	font-size: 15px;
+}
+
+.terms-modal h5{
+	margin-top: 10px;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.terms-modal .wrapper{
+	display: flex;
+	justify-content: flex-end;
+	margin: 10px 0;
+}
+
+.terms-modal .wrapper button{
+	height: 43px;
+	width: 120px;
+	margin: 0 5px;
+	font-family: 'Open Sans', sans-serif;
+	border-radius: 6px;
+}
+
+.yes{
+	border: none;
+	background: #ff0ca7;
+	color: white;
+}
+
+.yes:hover{
+	border: none;
+	background: #d70c8e;
+	color: white;
+}
+
+.nah{
+	background: white;
+	border: 2px solid #ff0ca7;
+	color: #ff0ca7;
+}
+
+.nah:hover{
+	background: #ff0ca7;
+	border: none;
+	color: white;
+}
+
+

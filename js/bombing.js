@@ -172,7 +172,7 @@ function send_email(name,gmail,password,target,subject,message,amount){
 				// stop bombing so that, not complete the bombing
 				isBombingStopped = true;
 				clearInterval(interval);
-				emailStatus.innerHTML = "Oops!You have entered wrong credentials.Please provide current credentials."
+				emailStatus.innerHTML = "Oops!You have entered wrong credentials.Please provide currect credentials."
 				i = 0;
 			}
 	  })

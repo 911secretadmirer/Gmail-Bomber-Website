@@ -4,7 +4,7 @@
 Hey, this is an awesome Gmail-Bomber website.By using this Gmail-Bomber website you can do unlimited email-bombing to your target email address.This website is made only for fun !
 </p>
 
-## Liv Url
+## Live Url
 * [Gmail-Bomber](https://gmail-bomber.netlify.app)
 
 ## Technology I Used To Create This Website

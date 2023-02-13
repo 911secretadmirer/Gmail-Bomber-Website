@@ -52,7 +52,9 @@ header{
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	flex-wrap: wrap;
 }
+
 
 .tutorial-btn{
 	/* background: linear-gradient(to right, #000046,#1CB5E0); */
@@ -76,6 +78,11 @@ header{
 	background: whitesmoke;
 	color: var(--green);
 	/* border: 2px solid white; */
+}
+
+.source-code-btn{
+	background: white;
+	color: var(--green);
 }
 
 .form{
@@ -168,16 +175,18 @@ footer{
 	background: linear-gradient(to right,var(--green),var(--black));
 	color: white;
 	padding: 10px;
-	height: 60px;
+	height: 50px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	font-family: 'Sofia Sans', sans-serif;
+	/* padding-top: 30px; */
+	z-index: 9990;
 }
 
 footer a{
 	color: white;
-	margin-top: auto;
+	/* margin-top: auto; */
 }
 
 

@@ -76,6 +76,8 @@ function start_interval(name,gmail,password,target,subject,message,amount){
 			// alert("finish")
 			// Bombing Complete Here
 			clearInterval(interval);
+			bombingStatus.innerHTML = "Completed";
+			// return;
 			// bombingStatus.innerHTML = "Completed";
 			// emailStatus.innerHTML = "All email sent successful";
 			// loading.setAttribute("src",tick_image);
@@ -93,6 +95,11 @@ function start_interval(name,gmail,password,target,subject,message,amount){
 	}, 1000);
 }
 
+
+let i = 0;
+let isBombingStopped = null;
+
+
 // Stop bombing by clicking on Stop-Bombing Button
 stopBtn.addEventListener("click", ()=>{
 	toast = document.querySelector(".toast");
@@ -104,6 +111,7 @@ stopBtn.addEventListener("click", ()=>{
 	modalContainer.style.opacity = 0;
 	modalContainer.style.pointerEvents = "none";
 	interval = null;
+	i = 0;
 	setTimeout(function() {
 		bombingStatus.innerHTML = "Started";
 		emailStatus.innerHTML = "";
@@ -117,8 +125,8 @@ stopBtn.addEventListener("click", ()=>{
 // Send Email Function
 const url = "https://fr-api.up.railway.app/api/gmail/send-mail";
 // const url = "http://127.0.0.1:5000/api/gmail/send-mail";
-let i = 0;
-let isBombingStopped = null;
+// let i = 0;
+// let isBombingStopped = null;
 function send_email(name,gmail,password,target,subject,message,amount){
 	fetch(url, {
 	  method: 'POST',
@@ -140,12 +148,13 @@ function send_email(name,gmail,password,target,subject,message,amount){
 			if(i == amount){
 			   // Bombing Complete Here
 				//clearInterval(interval);
-				bombingStatus.innerHTML = "Completed";
+				// bombingStatus.innerHTML = "Completed";
+				modalBoxTitle.innerHTML = "Bombing Completed"
 				emailStatus.innerHTML = "All email sent successful";
-				// alert("stopped");
 				loading.setAttribute("src",tick_image);
 				loading.setAttribute("alt","Finish...");
 				i = 0;
+				// alert(bombingStatus.innerHTML)
 				return;
 			}
 			// When email successfuly sent

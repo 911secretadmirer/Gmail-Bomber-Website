@@ -55,6 +55,9 @@ header{
 	flex-wrap: wrap;
 }
 
+.btn-container{
+	margin-top: 10px;
+}
 
 .tutorial-btn{
 	/* background: linear-gradient(to right, #000046,#1CB5E0); */
@@ -70,20 +73,25 @@ header{
 	/* border: 2px solid white; */
 	font-weight: bold;
 	/* margin: 10px 20px; */
-	margin: 10px 0;
+	margin: 5px 0;
 	border-radius: 5px;
 }
 
 .tutorial-btn:hover{
-	background: whitesmoke;
+	background: ghostwhite;
 	color: var(--green);
 	/* border: 2px solid white; */
 }
 
-.source-code-btn{
-	background: white;
-	color: var(--green);
+/*. source-code-btn{
+	background: ghostwhite;
+	color: #222;
 }
+
+.apk-btn{
+	background: ghostwhite;
+	color: #222;
+} */
 
 .form{
 	background: #ededed;

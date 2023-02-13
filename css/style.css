@@ -225,3 +225,16 @@ footer a{
 	color: #04af7d;
 }
 
+
+/*Extra*/
+
+.app-usages-message{
+	/* font-size: 10px; */
+	background: #f3d99f;
+	border-radius: 10px;
+	font-weight: 400;
+	font-family: Sans-Serif;
+	padding: 10px;
+	color: #333;
+	margin: 10px 0;
+}
